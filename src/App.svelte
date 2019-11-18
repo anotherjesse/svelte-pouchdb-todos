@@ -39,12 +39,10 @@
   onMount(loadTodos);
 
   function add(input) {
-    const todo = {
-      _id: new Date().toISOString(),
+    db.post({
       done: false,
       description: input.value
-    };
-    db.put(todo);
+    });
 
     input.value = "";
   }
