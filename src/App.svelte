@@ -3,6 +3,7 @@
   import { quintOut } from "svelte/easing";
   import { crossfade } from "svelte/transition";
   import { flip } from "svelte/animate";
+  import { onMount } from "svelte";
 
   var db = new PouchDB("todos");
   var remoteCouch = false;
@@ -35,7 +36,7 @@
   });
 
   let todos = [];
-  loadTodos();
+  onMount(loadTodos);
 
   function add(input) {
     const todo = {
